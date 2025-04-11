@@ -64,7 +64,7 @@ def get_token():
 
     headers = {"authorization": f"Bearer {r3.json()['data']['access_token']}", "content-type": "application/json; charset=UTF-8"}
     data4 = f'{{"fyers_id":"{username}","app_id":"{client_id[:-4]}","redirect_uri":"{redirect_uri}","appType":"100","code_challenge":"","state":"abcdefg","scope":"","nonce":"","response_type":"code","create_cookie":true}}'
-    r4 = s.post("https://api.fyers.in/api/v2/token", headers=headers, data=data4)
+    r4 = s.post("https://api-t1.fyers.in/api/v3/token", headers=headers, data=data4)
     assert r4.status_code == 308, f"Error in r4:\n {r4.json()}"
 
     parsed = urlparse(r4.json()["Url"])
